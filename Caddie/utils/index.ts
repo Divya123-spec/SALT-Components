@@ -1,0 +1,26 @@
+/*
+Licensed Materials - Property of IBM
+694906H
+(c) Copyright IBM Corp.  2020 All Rights Reserved
+
+US Government Users Restricted Rights - Use, duplication or disclosure restricted
+by GSA ADP Schedule Contract with IBM Corp.
+*/
+
+// Place for all our utils
+
+export const utilFunction = () => true;
+export const scrollToElement=(ref)=>{
+    const headerOffset = 150;
+    const elementPosition = ref.current?.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  };
+
+export const isoDateToUkTime = (date: string, time: string) => {
+  const newDate = new Date(`${date.trim()}T${time.trim()}:00Z`);
+  return newDate.toLocaleString('en-GB', { timeZone: 'Europe/London' }).split(',')[1].slice(0, 6);
+};
